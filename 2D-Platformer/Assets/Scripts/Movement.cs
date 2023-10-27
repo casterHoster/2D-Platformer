@@ -3,17 +3,34 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    private Quaternion rotation;
+    private float leftTurnDegree;
+    private float rightTurnDegree;
 
-    void Update()
+    private void Awake()
     {
-        if(Input.GetKey(KeyCode.A))
+        rotation = transform.rotation;
+        leftTurnDegree = 180f;
+        rightTurnDegree = 0.0f;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(_speed * Time.deltaTime * -1, 0, 0);
+            Follow(leftTurnDegree);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(_speed * Time.deltaTime, 0, 0);
-        } 
+            Follow(rightTurnDegree);
+        }   
+    }
+
+    private void Follow(float turnDegree)
+    {
+        rotation.y = turnDegree;
+        transform.rotation = rotation;
+        transform.Translate(_speed * Time.deltaTime, 0, 0);
     }
 }
