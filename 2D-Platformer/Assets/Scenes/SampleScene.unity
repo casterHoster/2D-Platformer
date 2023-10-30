@@ -822,7 +822,7 @@ MonoBehaviour:
   - {fileID: 190482338}
   - {fileID: 95715685}
   - {fileID: 1948429746}
-  _coin: {fileID: 4291215215909022706, guid: a822a5aa964a44a4c843be11c490a0e9, type: 3}
+  _coin: {fileID: -5083092264262738250, guid: a822a5aa964a44a4c843be11c490a0e9, type: 3}
 --- !u!4 &689123008
 Transform:
   m_ObjectHideFlags: 0

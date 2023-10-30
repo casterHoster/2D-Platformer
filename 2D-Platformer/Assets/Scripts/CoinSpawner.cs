@@ -1,11 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private Transform[] _points;
-    [SerializeField] private GameObject _coin;
+    [SerializeField] private List <Transform> _points;
+    [SerializeField] private Coin _coin;
+
     private float _delay;
+    private int _maxCoinsCountOnScene;
+    private int _coinsCountOnScene;
+    private List<Coin> _coins;
 
     private void Start()
     {
@@ -14,24 +19,43 @@ public class CoinSpawner : MonoBehaviour
 
     private void Awake()
     {
-        _delay = 1;
+        _delay = 5;
+        _maxCoinsCountOnScene = 2;
+        _coinsCountOnScene = 0;
     }
 
-    private Transform GetRandomPoint(Transform[] points)
+    private void OnEnable()
     {
-        Transform point = points[Random.Range(0, points.Length)];
+        
+    }
+
+    private void SubtractCoinsCountOnScene()
+    {
+        if (_coinsCountOnScene >= 0) 
+        {
+            _coinsCountOnScene--;
+        }
+    }
+
+    private Transform GetRandomPoint(List <Transform> points)
+    {
+        Transform point = _points[Random.Range(0, points.Count)];
         return point;
     }
 
     private IEnumerator Creator()
     {
         WaitForSeconds delay = new WaitForSeconds(_delay);
-
+        
         while (true)
         {
+            if (_maxCoinsCountOnScene > _coinsCountOnScene)
+            {
+                Coin coin = Instantiate(_coin, GetRandomPoint(_points).position, Quaternion.identity);
+                _coins.Add(coin);
+                _coinsCountOnScene++;
+            }
 
-            
-            GameObject gameObject = Instantiate(_coin, GetRandomPoint(_points).position, Quaternion.identity);
             yield return delay;
         }
     }
