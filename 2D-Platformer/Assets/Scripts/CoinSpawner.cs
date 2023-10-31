@@ -6,11 +6,10 @@ public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] private List <Transform> _points;
     [SerializeField] private Coin _coin;
+    [SerializeField] private float _generateDelay;
+    [SerializeField] private int _maxCoinsCountOnScene;
 
-    private float _delay;
-    private int _maxCoinsCountOnScene;
     private int _coinsCountOnScene;
-    private List<Coin> _coins;
 
     private void Start()
     {
@@ -19,14 +18,7 @@ public class CoinSpawner : MonoBehaviour
 
     private void Awake()
     {
-        _delay = 5;
-        _maxCoinsCountOnScene = 2;
         _coinsCountOnScene = 0;
-    }
-
-    private void OnEnable()
-    {
-        
     }
 
     private void SubtractCoinsCountOnScene()
@@ -45,14 +37,14 @@ public class CoinSpawner : MonoBehaviour
 
     private IEnumerator Creator()
     {
-        WaitForSeconds delay = new WaitForSeconds(_delay);
+        WaitForSeconds delay = new WaitForSeconds(_generateDelay);
         
         while (true)
         {
             if (_maxCoinsCountOnScene > _coinsCountOnScene)
             {
                 Coin coin = Instantiate(_coin, GetRandomPoint(_points).position, Quaternion.identity);
-                _coins.Add(coin);
+                coin.tookMoney += SubtractCoinsCountOnScene;
                 _coinsCountOnScene++;
             }
 

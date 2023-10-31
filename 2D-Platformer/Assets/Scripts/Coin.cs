@@ -1,16 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Coin : MonoBehaviour
 {
-    public event Action tookMoney;
+    public event UnityAction tookMoney;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Movement>(out Movement movement))
         {
-            tookMoney?.Invoke();
             Destroy(gameObject);
+            tookMoney?.Invoke();
         }
     }
 }
