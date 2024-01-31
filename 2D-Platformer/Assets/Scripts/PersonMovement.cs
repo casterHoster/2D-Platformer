@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class PersonMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     private Quaternion rotation;

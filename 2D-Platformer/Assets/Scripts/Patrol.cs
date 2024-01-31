@@ -4,6 +4,7 @@ public class Patrol : MonoBehaviour
 {
     [SerializeField] private Transform _path;
     [SerializeField] private float _speed;
+    [SerializeField] private GameObject _visibility;
 
     private Transform[] _points;
     private int _currentPoint;
@@ -33,4 +34,15 @@ public class Patrol : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
+        {
+            Vector2 direction = personMovement.transform.position - transform.position;
+            //Дописать движение за игроком
+        }
+
+    }
+
 }
