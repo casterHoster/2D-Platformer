@@ -15,17 +15,18 @@ public class PersonAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.Play("PersonAttack");
             StartCoroutine(DoAttack());
+            StopCoroutine(DoAttack());
         }
     }
 
     private IEnumerator DoAttack()
     {
         _attackHitBox.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         _attackHitBox.SetActive(false);
     }
 }
