@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
@@ -24,18 +23,18 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_isDoingCooldown == false)
         {
-
-            Debug.DrawRay(transform.position, transform.right * _attackRange);
-
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, _attackRange, _playerLayerMask);
 
             if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out PersonMovement person))
             {
                 _animator.Play("EnemyAttack");
                 StartCoroutine(WaitBeforeStrike());
+                StopCoroutine(WaitBeforeStrike());
                 StartCoroutine(DoAttack());
+                StopCoroutine(DoAttack());
                 _isDoingCooldown = true;
                 StartCoroutine(Cooldown());
+                StopCoroutine(Cooldown());
             }
         }
     }
@@ -46,7 +45,6 @@ public class EnemyAttack : MonoBehaviour
         yield return new WaitForSeconds(_hitBoxActiveTime);
         _attackHitBox.SetActive(false);
     }
-
 
     private IEnumerator WaitBeforeStrike()
     {

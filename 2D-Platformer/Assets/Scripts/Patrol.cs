@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Patrol : MonoBehaviour
 {
@@ -25,10 +24,9 @@ public class Patrol : MonoBehaviour
         {
             _points[i] = _path.GetChild(i);
         }
-
     }
 
-   private void Update()
+    private void Update()
     {
         if (_isSeePlayer)
         {
@@ -36,11 +34,14 @@ public class Patrol : MonoBehaviour
         }
         else
         {
-        _target = _points[_currentPoint];
+            _target = _points[_currentPoint];
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
-        Turn(_target);
+        if (_target != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+            Turn(_target);
+        }
 
         if (_target == _points[_currentPoint] && transform.position == _target.position)
         {
@@ -52,7 +53,6 @@ public class Patrol : MonoBehaviour
             }
         }
     }
-
 
     private void Turn(Transform target)
     {
