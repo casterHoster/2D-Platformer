@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private List <Transform> _points;
+    [SerializeField] private List<Transform> _points;
     [SerializeField] private Coin _coin;
     [SerializeField] private float _generateDelay;
     [SerializeField] private int _maxCoinsCountOnScene;
@@ -23,13 +23,13 @@ public class CoinSpawner : MonoBehaviour
 
     private void SubtractCoinsCountOnScene()
     {
-        if (_coinsCountOnScene >= 0) 
+        if (_coinsCountOnScene >= 0)
         {
             _coinsCountOnScene--;
         }
     }
 
-    private Transform GetRandomPoint(List <Transform> points)
+    private Transform GetRandomPoint(List<Transform> points)
     {
         Transform point = _points[Random.Range(0, points.Count)];
         return point;
@@ -38,7 +38,7 @@ public class CoinSpawner : MonoBehaviour
     private IEnumerator Creator()
     {
         WaitForSeconds delay = new WaitForSeconds(_generateDelay);
-        
+
         while (true)
         {
             if (_maxCoinsCountOnScene > _coinsCountOnScene)
