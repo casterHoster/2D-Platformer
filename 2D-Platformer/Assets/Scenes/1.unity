@@ -764,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3348d694a5a644dbefcfdcc0c6acc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,6 +2599,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 911715940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2845312491543105420
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330556141517499790, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401241769712997288, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
+      propertyPath: m_Name
+      value: first aid kit
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a70258cfb2ff6e408912ce43da5daa8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2612,3 +2669,4 @@ SceneRoots:
   - {fileID: 17356531}
   - {fileID: 911715940}
   - {fileID: 689123008}
+  - {fileID: 2845312491543105420}

@@ -11,7 +11,6 @@ public class Jump : MonoBehaviour
 
     private Rigidbody2D _body;
     private bool isOnGround;
-    
 
     private void Start()
     {

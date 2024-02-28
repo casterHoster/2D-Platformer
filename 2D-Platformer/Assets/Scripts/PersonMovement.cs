@@ -3,6 +3,7 @@ using UnityEngine;
 public class PersonMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
+
     private Quaternion rotation;
     private float leftTurnDegree;
     private float rightTurnDegree;
@@ -24,7 +25,7 @@ public class PersonMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             Follow(rightTurnDegree);
-        }   
+        }
     }
 
     private void Follow(float turnDegree)

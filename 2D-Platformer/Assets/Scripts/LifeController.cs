@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LifeController : MonoBehaviour
@@ -16,6 +14,11 @@ public class LifeController : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (collision.TryGetComponent<Firstaidkit>(out Firstaidkit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
+        {
+            _health++;
         }
     }
 }

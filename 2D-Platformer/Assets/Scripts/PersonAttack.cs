@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PersonAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject _attackHitBox; 
+    [SerializeField] private GameObject _attackHitBox;
 
     private Animator animator;
 

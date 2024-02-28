@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,8 +8,7 @@ public class Detection : MonoBehaviour
     public event UnityAction TargetIsFound;
 
     private float _rayLength = 5;
-    public Transform _target { get; private set;}
-
+    public Transform _target { get; private set; }
 
     private void FixedUpdate()
     {
@@ -24,7 +20,6 @@ public class Detection : MonoBehaviour
         {
             TargetIsFound?.Invoke();
         }
-
     }
 
     private Transform Detect()
@@ -40,6 +35,4 @@ public class Detection : MonoBehaviour
 
         return null;
     }
-
-
 }
