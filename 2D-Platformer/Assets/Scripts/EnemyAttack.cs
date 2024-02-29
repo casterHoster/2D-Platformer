@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent (typeof(Animator))]
+
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private GameObject _attackHitBox;
     [SerializeField] private float _attackRange;
     [SerializeField] private LayerMask _playerLayerMask;
+
+    const string AttackAnimation = "EnemyAttack";
 
     private Animator _animator;
     private bool _isDoingCooldown;
@@ -27,7 +31,7 @@ public class EnemyAttack : MonoBehaviour
 
             if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out PersonMovement person))
             {
-                _animator.Play("EnemyAttack");
+                _animator.Play(AttackAnimation);
                 StartCoroutine(WaitBeforeStrike());
                 StopCoroutine(WaitBeforeStrike());
                 StartCoroutine(DoAttack());

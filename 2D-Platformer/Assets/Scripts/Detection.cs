@@ -5,9 +5,10 @@ public class Detection : MonoBehaviour
 {
     [SerializeField] private LayerMask _playerLayerMask;
 
+    private float _rayLength = 5;
+
     public event UnityAction TargetIsFound;
 
-    private float _rayLength = 5;
     public Transform _target { get; private set; }
 
     private void FixedUpdate()
@@ -24,8 +25,6 @@ public class Detection : MonoBehaviour
 
     private Transform Detect()
     {
-        Debug.DrawRay(transform.position, transform.right * _rayLength);
-
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, _rayLength);
 
         if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out PersonMovement person))
