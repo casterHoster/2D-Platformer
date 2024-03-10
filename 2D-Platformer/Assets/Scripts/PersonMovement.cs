@@ -4,34 +4,34 @@ public class PersonMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    private Quaternion rotation;
-    private float leftTurnDegree;
-    private float rightTurnDegree;
+    private Quaternion _rotation;
+    private float _leftTurnDegree;
+    private float _rightTurnDegree;
 
     private void Awake()
     {
-        rotation = transform.rotation;
-        leftTurnDegree = 180f;
-        rightTurnDegree = 0.0f;
+        _rotation = transform.rotation;
+        _leftTurnDegree = 180f;
+        _rightTurnDegree = 0.0f;
     }
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            Follow(leftTurnDegree);
+            Follow(_leftTurnDegree);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            Follow(rightTurnDegree);
+            Follow(_rightTurnDegree);
         }
     }
 
     private void Follow(float turnDegree)
     {
-        rotation.y = turnDegree;
-        transform.rotation = rotation;
+        _rotation.y = turnDegree;
+        transform.rotation = _rotation;
         transform.Translate(_speed * Time.deltaTime, 0, 0);
     }
 }

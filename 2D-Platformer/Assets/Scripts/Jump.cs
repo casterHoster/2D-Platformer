@@ -9,21 +9,24 @@ public class Jump : MonoBehaviour
     [SerializeField] private float _radiusTestingGround;
     [SerializeField] private Transform pointForTestGround;
 
-    private Rigidbody2D _body;
+    private Rigidbody2D _rigidbody;
     private bool isOnGround;
 
-    private void Start()
+    private void Awake()
     {
-        _body = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        isOnGround = Physics2D.OverlapCircle(pointForTestGround.position, _radiusTestingGround, _ground);
     }
 
     private void Update()
     {
-        isOnGround = Physics2D.OverlapCircle(pointForTestGround.position, _radiusTestingGround, _ground);
-
         if (Input.GetKeyDown(KeyCode.W) && isOnGround)
         {
-            _body.AddForce(Vector2.up * _jumpForce);
+            _rigidbody.AddForce(Vector2.up * _jumpForce);
         }
     }
 }
