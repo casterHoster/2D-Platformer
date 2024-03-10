@@ -3,14 +3,10 @@ using UnityEngine.Events;
 
 public class Coin : MonoBehaviour
 {
-    public event UnityAction tookMoney;
+    public event UnityAction<Coin> TookMoney;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDestroy()
     {
-        if (collision.TryGetComponent<PersonMovement>(out PersonMovement movement))
-        {
-            Destroy(gameObject);
-            tookMoney?.Invoke();
-        }
+        TookMoney(this);
     }
 }

@@ -9,29 +9,41 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private float _generateDelay;
     [SerializeField] private int _maxCoinsCountOnScene;
 
-    private int _coinsCountOnScene;
+    private List<Coin> _coins;
+    private List<Vector3> _pointsVectors;
 
     private void Start()
     {
+        ConvertToVectors();
         StartCoroutine(Creator());
     }
 
     private void Awake()
     {
-        _coinsCountOnScene = 0;
+        _pointsVectors = new List<Vector3>();
+        _coins = new List<Coin>();
     }
 
-    private void SubtractCoinsCountOnScene()
+    private void DecreaseCount(Coin coin)
     {
-        if (_coinsCountOnScene >= 0)
+        if (_coins.Count >= 0)
         {
-            _coinsCountOnScene--;
+            _pointsVectors.Add(coin.transform.position);
+            _coins.Remove(coin);
         }
     }
 
-    private Transform GetRandomPoint(List<Transform> points)
+    private void ConvertToVectors()
     {
-        Transform point = _points[Random.Range(0, points.Count)];
+        for (int i =  0; i < _points.Count; i++)
+        {
+            _pointsVectors.Add(_points[i].position);
+        }
+    }
+
+    private Vector3 GetRandomPoint(List<Vector3> points)
+    {
+        Vector3 point = _pointsVectors[Random.Range(0, points.Count)];
         return point;
     }
 
@@ -41,11 +53,13 @@ public class CoinSpawner : MonoBehaviour
 
         while (true)
         {
-            if (_maxCoinsCountOnScene > _coinsCountOnScene)
+            if (_maxCoinsCountOnScene > _coins.Count)
             {
-                Coin coin = Instantiate(_coin, GetRandomPoint(_points).position, Quaternion.identity);
-                coin.tookMoney += SubtractCoinsCountOnScene;
-                _coinsCountOnScene++;
+                Vector3 currentTransform = GetRandomPoint(_pointsVectors);
+                Coin coin = Instantiate(_coin, currentTransform, Quaternion.identity);
+                _coins.Add(coin);
+                _pointsVectors.Remove(currentTransform);
+                coin.TookMoney += DecreaseCount;
             }
 
             yield return delay;

@@ -6,7 +6,7 @@ public class LifeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "AttackHitBox")
+        if (collision.TryGetComponent<BoxCollider2D>(out BoxCollider2D boxCollider))
         {
             _health--;
 
@@ -16,7 +16,7 @@ public class LifeController : MonoBehaviour
             }
         }
 
-        if (collision.TryGetComponent<Firstaidkit>(out Firstaidkit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
+        if (collision.TryGetComponent<FirstAidKit>(out FirstAidKit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
         {
             _health++;
         }

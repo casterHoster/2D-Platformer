@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 457037662}
   - component: {fileID: 457037663}
   - component: {fileID: 457037664}
+  - component: {fileID: 457037665}
   m_Layer: 7
   m_Name: Person
   m_TagString: Untagged
@@ -821,7 +822,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3348d694a5a644dbefcfdcc0c6acc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 100
+--- !u!114 &457037665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457037655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5fcf6a94de2ac449d0bd2b61134d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1040,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6.71, y: -2.76, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

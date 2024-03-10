@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent (typeof(Animator))]
+[RequireComponent(typeof(Animator))]
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -31,32 +31,26 @@ public class EnemyAttack : MonoBehaviour
 
             if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out PersonMovement person))
             {
-                _animator.Play(AttackAnimation);
-                StartCoroutine(WaitBeforeStrike());
-                StopCoroutine(WaitBeforeStrike());
                 StartCoroutine(DoAttack());
+                StartCoroutine(Waiting());
                 StopCoroutine(DoAttack());
-                _isDoingCooldown = true;
-                StartCoroutine(Cooldown());
-                StopCoroutine(Cooldown());
+                StartCoroutine(Waiting());
             }
         }
     }
 
     private IEnumerator DoAttack()
     {
+        _animator.Play(AttackAnimation);
+        yield return new WaitForSeconds(_waitingTime);
         _attackHitBox.SetActive(true);
         yield return new WaitForSeconds(_hitBoxActiveTime);
         _attackHitBox.SetActive(false);
     }
 
-    private IEnumerator WaitBeforeStrike()
+    private IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(_waitingTime);
-    }
-
-    private IEnumerator Cooldown()
-    {
+        _isDoingCooldown = true;
         yield return new WaitForSeconds(_cooldownTime);
         _isDoingCooldown = false;
     }
