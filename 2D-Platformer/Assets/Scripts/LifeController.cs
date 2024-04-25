@@ -1,24 +1,40 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LifeController : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private HealthView _healthView;
+
+    private Health _health;
+
+    public event UnityAction<float, float> HealthChanged;
+
+    private void Start()
+    {
+        _health = new Health(_maxHealth);   
+        _healthView.BuildHealthBar(_health);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<BoxCollider2D>(out BoxCollider2D boxCollider))
-        {
-            _health--;
 
-            if (_health <= 0)
+        if (collision.TryGetComponent<HitBox>(out HitBox hitBox))
+        {
+            _health.DecreaseValue();
+
+            if (_health.CurrentValue <= 0)
             {
                 Destroy(gameObject);
             }
+
+            HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
         }
 
         if (collision.TryGetComponent<FirstAidKit>(out FirstAidKit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
         {
-            _health++;
+            _health.IncreaseValue();
+            HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
         }
     }
 }
