@@ -15,4 +15,9 @@ public class HealthText : HealthView
     {
         _text.text = $"{currentValue}/{maxValue}";
     }
+
+    protected override void BreakHealthBar()
+    {
+        throw new System.NotImplementedException();
+    }
 }

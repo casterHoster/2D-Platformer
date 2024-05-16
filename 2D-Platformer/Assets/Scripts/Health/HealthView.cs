@@ -8,5 +8,13 @@ public abstract class HealthView : MonoBehaviour
         DrawHealthValue(health.CurrentValue, health.MaxValue);
     }
 
+    public void StopDraw(Health health)
+    {
+        health.ChangedCount -= DrawHealthValue;
+        BreakHealthBar();
+    }
+
+    protected abstract void BreakHealthBar();
+
     protected abstract void DrawHealthValue(float currentValue, float maxValue);
 }

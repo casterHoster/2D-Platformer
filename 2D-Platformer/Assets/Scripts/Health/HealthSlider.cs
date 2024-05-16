@@ -1,19 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Slider))]
 public class HealthSlider : HealthView
 {
     [SerializeField] private Vector3 _offset;
     [SerializeField] private Transform _ownerTransform;
     [SerializeField] private LifeController _ownerLifeController;
-
-    private Slider _slider;
+    [SerializeField] private Slider _slider;
 
     private void Start()
     {
-        _slider = GetComponent<Slider>();
-        _ownerLifeController.HealthChanged += DrawHealthValue;
+        _slider.value = 1;
+        _slider.maxValue = 100;
     }
 
     private void Update()
@@ -25,5 +23,10 @@ public class HealthSlider : HealthView
     {
         _slider.value = currentValue;
         _slider.maxValue = maxValue;
+    }
+
+    protected override void BreakHealthBar()
+    {
+        Destroy(gameObject);
     }
 }

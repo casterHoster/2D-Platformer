@@ -26,6 +26,7 @@ public class LifeController : MonoBehaviour
             if (_health.CurrentValue <= 0)
             {
                 Destroy(gameObject);
+                _healthView.StopDraw(_health);
             }
 
             HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);

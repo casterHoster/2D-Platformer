@@ -6,14 +6,22 @@ using UnityEngine.UI;
 public class HealthFlowingSlider : HealthView
 {
     [SerializeField] private float _speed;
+    [SerializeField] private Slider _slider;
+    [SerializeField] private Transform _ownerTransform;
+    [SerializeField] private LifeController _ownerLifeController;
+    [SerializeField] private Vector3 _offset;
 
-    private Slider _slider;
     private Coroutine _coroutine;
     private bool _isStartedHealth = true;
 
     private void Start()
     {
         _slider = GetComponent<Slider>();
+    }
+
+    private void Update()
+    {
+        _slider.transform.position = Camera.main.WorldToScreenPoint(_ownerTransform.position + _offset);
     }
 
     private IEnumerator FlowCurrentDraw(float currentValue)
@@ -41,5 +49,10 @@ public class HealthFlowingSlider : HealthView
         }
 
         _coroutine = StartCoroutine(FlowCurrentDraw(currentValue));          
+    }
+
+    protected override void BreakHealthBar()
+    {
+        Destroy(gameObject);
     }
 }
