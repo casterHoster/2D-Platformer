@@ -11,6 +11,7 @@ public class Jump : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private bool isOnGround;
+    private bool _isKeyDown = false;
 
     private void Awake()
     {
@@ -20,13 +21,19 @@ public class Jump : MonoBehaviour
     private void FixedUpdate()
     {
         isOnGround = Physics2D.OverlapCircle(pointForTestGround.position, _radiusTestingGround, _ground);
+
+        if (_isKeyDown == true )
+        {
+            _rigidbody.AddForce(Vector2.up * _jumpForce);
+            _isKeyDown = false;
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.W) && isOnGround)
         {
-            _rigidbody.AddForce(Vector2.up * _jumpForce);
+            _isKeyDown = true;
         }
     }
 }

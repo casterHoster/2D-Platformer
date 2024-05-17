@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &95715684
 GameObject:
@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 457037663}
   - component: {fileID: 457037664}
   - component: {fileID: 457037665}
+  - component: {fileID: 457037666}
   m_Layer: 7
   m_Name: Person
   m_TagString: Untagged
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dfe40ed4c353ed47a063eddc77791ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 300
+  _jumpForce: 350
   _ground:
     serializedVersion: 2
     m_Bits: 8
@@ -628,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cafb30003e45842b64a07263a34691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackHitBox: {fileID: 2096770542}
+  _attackHitBox: {fileID: 2096770545}
 --- !u!114 &457037664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,10 +639,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 457037655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3348d694a5a644dbefcfdcc0c6acc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 178811fb9b9ddf84c94a5c912159d683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 5
   _healthView: {fileID: 921897505}
 --- !u!114 &457037665
 MonoBehaviour:
@@ -655,6 +656,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5fcf6a94de2ac449d0bd2b61134d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &457037666
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457037655}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.72, y: 0.74}
+    newSize: {x: 0.72, y: 0.74}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.72, y: 0.74}
+  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,8 +826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &612671879
 GameObject:
@@ -1227,7 +1273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1769,7 +1815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2084,7 +2130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541114465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3348d694a5a644dbefcfdcc0c6acc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 178811fb9b9ddf84c94a5c912159d683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 3
@@ -3671,7 +3717,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883176442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3348d694a5a644dbefcfdcc0c6acc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 178811fb9b9ddf84c94a5c912159d683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 3
@@ -4023,6 +4069,18 @@ PrefabInstance:
       propertyPath: _ownerLifeController
       value: 
       objectReference: {fileID: 1883176449}
+    - target: {fileID: 5328037528626632174, guid: a8966ce42b0f9884abefc16986635c7b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328037528626632174, guid: a8966ce42b0f9884abefc16986635c7b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184112838829694561, guid: a8966ce42b0f9884abefc16986635c7b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8168812683473181013, guid: a8966ce42b0f9884abefc16986635c7b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

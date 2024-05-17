@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LifeController : MonoBehaviour
+public class HealthChange : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
     [SerializeField] private HealthView _healthView;
@@ -19,7 +19,7 @@ public class LifeController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.TryGetComponent<HitBox>(out HitBox hitBox))
+        if (collision.TryGetComponent(out HitBox hitBox))
         {
             _health.DecreaseValue();
 
@@ -32,7 +32,7 @@ public class LifeController : MonoBehaviour
             HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
         }
 
-        if (collision.TryGetComponent<FirstAidKit>(out FirstAidKit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
+        if (collision.TryGetComponent(out FirstAidKit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
         {
             _health.IncreaseValue();
             HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);

@@ -8,7 +8,7 @@ public class HealthFlowingSlider : HealthView
     [SerializeField] private float _speed;
     [SerializeField] private Slider _slider;
     [SerializeField] private Transform _ownerTransform;
-    [SerializeField] private LifeController _ownerLifeController;
+    [SerializeField] private HealthChange _ownerLifeController;
     [SerializeField] private Vector3 _offset;
 
     private Coroutine _coroutine;

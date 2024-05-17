@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PersonAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject _attackHitBox;
+    [SerializeField] private BoxCollider2D _attackHitBox;
 
     private Animator animator;
 
     private void Start()
     {
-        _attackHitBox.SetActive(false);
+        _attackHitBox.enabled = false;
         animator = GetComponent<Animator>();
     }
 
@@ -25,8 +25,8 @@ public class PersonAttack : MonoBehaviour
 
     private IEnumerator DoAttack()
     {
-        _attackHitBox.SetActive(true);
+        _attackHitBox.enabled = true;
         yield return new WaitForSeconds(0.1f);
-        _attackHitBox.SetActive(false);
+        _attackHitBox.enabled = false;
     }
 }
