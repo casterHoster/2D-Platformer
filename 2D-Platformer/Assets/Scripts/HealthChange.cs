@@ -21,7 +21,7 @@ public class HealthChange : MonoBehaviour
 
         if (collision.TryGetComponent(out HitBox hitBox))
         {
-            _health.DecreaseValue();
+            _health.Damage();
 
             if (_health.CurrentValue <= 0)
             {
@@ -34,7 +34,7 @@ public class HealthChange : MonoBehaviour
 
         if (collision.TryGetComponent(out FirstAidKit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
         {
-            _health.IncreaseValue();
+            _health.Heal();
             HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
         }
     }

@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float _attackRange;
     [SerializeField] private LayerMask _playerLayerMask;
 
-    const string AttackAnimation = "EnemyAttack";
+    private int _attackAnimation = Animator.StringToHash("EnemyAttack");
 
     private Animator _animator;
     private bool _isDoingCooldown;
@@ -41,7 +41,7 @@ public class EnemyAttack : MonoBehaviour
 
     private IEnumerator DoAttack()
     {
-        _animator.Play(AttackAnimation);
+        _animator.Play(_attackAnimation);
         yield return new WaitForSeconds(_waitingTime);
         _attackHitBox.SetActive(true);
         yield return new WaitForSeconds(_hitBoxActiveTime);

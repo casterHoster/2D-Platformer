@@ -18,14 +18,14 @@ public class Health
         _maxValue = maxHealth;
     }
 
-    public void DecreaseValue()
+    public void Damage()
     {
         _currentValue --;
 
         ChangedCount?.Invoke(_currentValue, _maxValue);
     }
 
-    public void IncreaseValue()
+    public void Heal()
     {
         _currentValue++;
 
