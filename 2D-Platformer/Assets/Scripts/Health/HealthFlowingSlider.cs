@@ -24,15 +24,6 @@ public class HealthFlowingSlider : HealthView
         _slider.transform.position = Camera.main.WorldToScreenPoint(_ownerTransform.position + _offset);
     }
 
-    private IEnumerator FlowCurrentDraw(float currentValue)
-    {
-        while (_slider.value != currentValue)
-        {
-            _slider.value = Mathf.MoveTowards(_slider.value, currentValue, Time.deltaTime * _speed);
-            yield return null;
-        }
-    }
-
     protected override void DrawHealthValue(float currentValue, float maxValue)
     {
         _slider.maxValue = maxValue;
@@ -54,5 +45,14 @@ public class HealthFlowingSlider : HealthView
     protected override void BreakHealthBar()
     {
         Destroy(gameObject);
+    }
+
+    private IEnumerator FlowCurrentDraw(float currentValue)
+    {
+        while (_slider.value != currentValue)
+        {
+            _slider.value = Mathf.MoveTowards(_slider.value, currentValue, Time.deltaTime * _speed);
+            yield return null;
+        }
     }
 }
