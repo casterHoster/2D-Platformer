@@ -10,6 +10,7 @@ public class HealthFlowingSlider : HealthView
     [SerializeField] private Transform _ownerTransform;
     [SerializeField] private HealthChange _ownerLifeController;
     [SerializeField] private Vector3 _offset;
+    [SerializeField] Camera _camera;
 
     private Coroutine _coroutine;
     private bool _isStartedHealth = true;
@@ -21,7 +22,7 @@ public class HealthFlowingSlider : HealthView
 
     private void Update()
     {
-        _slider.transform.position = Camera.main.WorldToScreenPoint(_ownerTransform.position + _offset);
+        _slider.transform.position = _camera.WorldToScreenPoint(_ownerTransform.position + _offset);
     }
 
     protected override void DrawHealthValue(float currentValue, float maxValue)
