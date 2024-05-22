@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 457037664}
   - component: {fileID: 457037665}
   - component: {fileID: 457037666}
+  - component: {fileID: 457037667}
   m_Layer: 7
   m_Name: Person
   m_TagString: Untagged
@@ -515,7 +516,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 255
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -642,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178811fb9b9ddf84c94a5c912159d683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
+  _maxHealth: 10
   _healthView: {fileID: 921897505}
 --- !u!114 &457037665
 MonoBehaviour:
@@ -701,6 +702,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.74}
   m_EdgeRadius: 0
+--- !u!114 &457037667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457037655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29b76454adc9974a93799c556968877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 2
+  _skillTime: 6
+  _cooldown: 1
+  _excludes:
+  - serializedVersion: 2
+    m_Bits: 447
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

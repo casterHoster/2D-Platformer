@@ -16,6 +16,22 @@ public class HealthChange : MonoBehaviour
         _healthView.BuildHealthBar(_health);
     }
 
+    public void IncreaseHealth()
+    {
+        _health.Heal();
+    }
+
+    public void DecreaseHealth()
+    {
+        _health.Damage();
+
+        if (_health.CurrentValue <= 0)
+        {
+            Destroy(gameObject);
+            _healthView.StopDraw(_health);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

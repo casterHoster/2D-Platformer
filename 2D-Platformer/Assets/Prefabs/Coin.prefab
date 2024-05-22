@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2491840270029498782}
   - component: {fileID: -1164458314198027915}
   - component: {fileID: -5083092264262738250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,6 +143,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6caad0fcb57b95f4baefc2e66f5a3f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tookMoney:
-    m_PersistentCalls:
-      m_Calls: []
