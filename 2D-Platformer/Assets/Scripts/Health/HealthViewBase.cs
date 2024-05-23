@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class HealthView : MonoBehaviour
+public abstract class HealthViewBase : MonoBehaviour
 {
     public void BuildHealthBar(Health health)
     {

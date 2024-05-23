@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CircleCollider2D))]
 
@@ -15,6 +16,8 @@ public class Vampirism : MonoBehaviour
     private CircleCollider2D _circleSkillRadius;
     private HealthChange _health;
     private bool _canUse = true;
+
+    public event UnityAction<float> IsActivated;
 
     private void Awake()
     {
@@ -37,6 +40,7 @@ public class Vampirism : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && _skill.IsActive == false)
         {
+            IsActivated?.Invoke(_skillTime);
             StartCoroutine(SkillActivate());
         }
     }

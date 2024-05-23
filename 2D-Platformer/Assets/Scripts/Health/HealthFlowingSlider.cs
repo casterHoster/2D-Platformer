@@ -3,14 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class HealthFlowingSlider : HealthView
+public class HealthFlowingSlider : HealthViewBase
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private Slider _slider;
-    [SerializeField] private Transform _ownerTransform;
-    [SerializeField] private HealthChange _ownerLifeController;
-    [SerializeField] private Vector3 _offset;
-    //[SerializeField] Camera _camera;
+    [SerializeField] protected float _speed;
+    [SerializeField] protected Slider _slider;
+    [SerializeField] protected Transform _ownerTransform;
+    [SerializeField] protected HealthChange _ownerLifeController;
+    [SerializeField] protected Vector3 _offset;
 
     private Coroutine _coroutine;
     private bool _isStartedHealth = true;
@@ -18,11 +17,6 @@ public class HealthFlowingSlider : HealthView
     private void Start()
     {
         _slider = GetComponent<Slider>();
-    }
-
-    private void Update()
-    {
-        _slider.transform.position = _ownerTransform.position + _offset;
     }
 
     protected override void DrawHealthValue(float currentValue, float maxValue)
