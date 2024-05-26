@@ -25,7 +25,7 @@ public class Detection : MonoBehaviour
 
     private Transform Detect()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, _rayLength);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, _rayLength, _playerLayerMask);
 
         if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out PersonMovement person))
         {

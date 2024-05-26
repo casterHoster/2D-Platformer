@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(CircleCollider2D))]
-
 public class Vampirism : MonoBehaviour
 {
     [SerializeField] private float _range;
     [SerializeField] private int _skillTime;
-    [SerializeField] private int _cooldown;
+    [SerializeField] private int _cooldownTick;
     [SerializeField] private List<LayerMask> _excludes;
+    [SerializeField] private HealthChange _health;
 
     private Skill _skill;
     private CircleCollider2D _circleSkillRadius;
-    private HealthChange _health;
+    
     private bool _canUse = true;
+
+    public float Range { get => _range; }
 
     public event UnityAction<float> IsActivated;
 
@@ -24,6 +25,7 @@ public class Vampirism : MonoBehaviour
         _circleSkillRadius = gameObject.AddComponent<CircleCollider2D>();
         _circleSkillRadius.isTrigger = true;
         _circleSkillRadius.radius = _range;
+
         foreach (LayerMask excude in _excludes)
         {
             _circleSkillRadius.excludeLayers = excude;
@@ -33,7 +35,6 @@ public class Vampirism : MonoBehaviour
     private void Start()
     {
         _skill = new Skill(_range);
-        _health = GetComponent<HealthChange>();
     }
 
     private void Update()
@@ -44,7 +45,6 @@ public class Vampirism : MonoBehaviour
             StartCoroutine(SkillActivate());
         }
     }
-
     private void DrinkHealth(HealthChange enemyHealth)
     {
         _health.IncreaseHealth();
@@ -75,7 +75,7 @@ public class Vampirism : MonoBehaviour
         if (_canUse == true)
         {
             _canUse = false;
-            yield return new WaitForSeconds(_cooldown);
+            yield return new WaitForSeconds(_cooldownTick);
             _canUse = true;
         }
     }

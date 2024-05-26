@@ -6,6 +6,7 @@ public class SkillView : MonoBehaviour
     [SerializeField] private Vampirism _vampirism;
 
     private SpriteRenderer _skillView;
+    private Transform _transform;
 
     private void Awake()
     {
@@ -16,11 +17,12 @@ public class SkillView : MonoBehaviour
     {
         _skillView = GetComponent<SpriteRenderer>();
         _skillView.enabled = false;
+        _transform = GetComponent<Transform>();
+        _transform.localScale = new Vector3(_vampirism.Range * 2, _vampirism.Range * 2, _vampirism.Range * 2);
     }
 
     private void ActivateSkillView(float skillTime)
     {
-
         StartCoroutine(CoutTime(skillTime));
     }
 
