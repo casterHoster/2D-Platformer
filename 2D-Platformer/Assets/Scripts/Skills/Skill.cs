@@ -2,20 +2,16 @@ using UnityEngine;
 
 public class Skill
 {
-    private float _range;
-
-    private bool _isActive;
-
-   public float Range { get => _range; }
-   public bool IsActive { get => _isActive; }
+   public float Range { get; }
+   public bool IsActive { get; private set; }
 
     public Skill(float range)
     {
-        _range = range;
+        Range = range;
     }
 
     public void ChangeActivity()
     {
-        _isActive = !_isActive;
+        IsActive = !IsActive;
     }
 }
