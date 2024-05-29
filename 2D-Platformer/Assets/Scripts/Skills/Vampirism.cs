@@ -13,7 +13,7 @@ public class Vampirism : MonoBehaviour
 
     private Skill _skill;
     private CircleCollider2D _circleSkillRadius;
-    
+
     private bool _canUse = true;
 
     public float Range { get => _range; }
@@ -35,6 +35,7 @@ public class Vampirism : MonoBehaviour
     private void Start()
     {
         _skill = new Skill(_range);
+        StartCoroutine(TryCollision());
     }
 
     private void Update()
@@ -51,15 +52,25 @@ public class Vampirism : MonoBehaviour
         enemyHealth.DecreaseHealth();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private IEnumerator TryCollision()
     {
-        if (collision.TryGetComponent(out Patrol patrol) && collision.TryGetComponent(out HealthChange enemyHealth) && _skill.IsActive == true && _canUse)
+        WaitForSeconds update = new WaitForSeconds(0.1f);
+
+        while (true)
         {
-            if (!_health.Equals(enemyHealth))
+            var hitColliders = Physics2D.OverlapCircleAll(transform.position, _range);
+
+            foreach (var collider in hitColliders)
             {
-                DrinkHealth(enemyHealth);
-                StartCoroutine(Delay());
+                if (collider.TryGetComponent(out Patrol patrol) && collider.TryGetComponent(out HealthChange enemyHealth)
+                    && _skill.IsActive == true && _canUse && !_health.Equals(enemyHealth))
+                {
+                    DrinkHealth(enemyHealth);
+                    StartCoroutine(Delay());
+                }
             }
+
+            yield return update;
         }
     }
 
