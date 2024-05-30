@@ -2,13 +2,13 @@ using UnityEngine;
 
 public abstract class HealthViewBase : MonoBehaviour
 {
-    public void BuildHealthBar(Health health)
+    public void BuildHealthBar(HealthSample health)
     {
         health.ChangedCount += DrawHealthValue;
         DrawHealthValue(health.CurrentValue, health.MaxValue);
     }
 
-    public void StopDraw(Health health)
+    public void StopDraw(HealthSample health)
     {
         health.ChangedCount -= DrawHealthValue;
         BreakHealthBar();

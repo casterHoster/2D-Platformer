@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health
+public class HealthSample
 {
     private float _maxValue;
     private float _currentValue;
@@ -12,7 +12,7 @@ public class Health
 
     public float CurrentValue { get => _currentValue; }
 
-    public Health(float maxHealth)
+    public HealthSample(float maxHealth)
     {
         _currentValue = maxHealth;
         _maxValue = maxHealth;
@@ -32,4 +32,43 @@ public class Health
         ChangedCount?.Invoke(_currentValue, _maxValue);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

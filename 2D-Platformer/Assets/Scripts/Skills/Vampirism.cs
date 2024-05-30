@@ -19,22 +19,22 @@ public class Vampirism : MonoBehaviour
 
     public float Range { get => _range; }
 
-    private void Awake()
-    {
-        _circleSkillRadius = gameObject.AddComponent<CircleCollider2D>();
-        _circleSkillRadius.isTrigger = true;
-        _circleSkillRadius.radius = _range;
+    //private void Awake()
+    //{
+        //_circleSkillRadius = gameObject.AddComponent<CircleCollider2D>();
+        //_circleSkillRadius.enabled = false;
+        //_circleSkillRadius.isTrigger = true;
+        //_circleSkillRadius.radius = _range;
 
-        foreach (LayerMask excude in _excludes)
-        {
-            _circleSkillRadius.excludeLayers = excude;
-        }
-    }
+        //foreach (LayerMask excude in _excludes)
+        //{
+        //    _circleSkillRadius.excludeLayers = excude;
+        //}
+    //}
 
     private void Start()
     {
         _skill = new Skill(_range);
-        StartCoroutine(TryCollision());
     }
 
     private void Update()
@@ -43,6 +43,7 @@ public class Vampirism : MonoBehaviour
         {
             IsActivated?.Invoke(_skillTime);
             StartCoroutine(SkillActivate());
+            StartCoroutine(TryCollision());
         }
     }
     private void DrinkHealth(HealthChange enemyHealth)
