@@ -6,11 +6,11 @@ public class Health
     private float _maxValue;
     private float _currentValue;
 
+    public event UnityAction<float, float> ChangedCount;
+    
     public float MaxValue { get => _maxValue; }
 
     public float CurrentValue { get => _currentValue; }
-
-    public event UnityAction<float, float> ChangedCount;
 
     public Health(float maxHealth)
     {

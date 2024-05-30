@@ -13,12 +13,11 @@ public class Vampirism : MonoBehaviour
 
     private Skill _skill;
     private CircleCollider2D _circleSkillRadius;
-
     private bool _canUse = true;
 
-    public float Range { get => _range; }
-
     public event UnityAction<float> IsActivated;
+
+    public float Range { get => _range; }
 
     private void Awake()
     {
