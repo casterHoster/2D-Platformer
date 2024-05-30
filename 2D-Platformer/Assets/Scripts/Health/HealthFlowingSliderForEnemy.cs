@@ -1,4 +1,4 @@
-public class HealthFlowingSliderEnemy : HealthFlowingSlider
+public class HealthFlowingSliderForEnemy : HealthFlowingSlider
 {
     private void Update()
     {

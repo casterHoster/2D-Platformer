@@ -21,19 +21,14 @@ public class Health
     public void Damage()
     {
         _currentValue --;
-
+        _currentValue = Mathf.Clamp(_currentValue, 0, MaxValue);
         ChangedCount?.Invoke(_currentValue, _maxValue);
     }
 
     public void Heal()
     {
         _currentValue++;
-
-        if (_currentValue > _maxValue)
-        {
-            _currentValue = _maxValue;
-        }
-
+        _currentValue = Mathf.Clamp(_currentValue, 0, MaxValue);
         ChangedCount?.Invoke(_currentValue, _maxValue);
     }
 }
