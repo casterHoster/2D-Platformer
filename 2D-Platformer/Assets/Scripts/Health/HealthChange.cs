@@ -10,7 +10,7 @@ public class HealthChange : MonoBehaviour
 
     private HealthSample _health;
 
-    public event UnityAction<float, float> HealthChanged;
+    //public event UnityAction<float, float> HealthChanged;
     public event UnityAction HealthIsNegative;
 
     private void Start()
@@ -35,7 +35,7 @@ public class HealthChange : MonoBehaviour
         }
     }
 
-    public float GetCurrentVaalue()
+    public float GetCurrentValue()
     {
         return _health.CurrentValue;
     }
@@ -48,17 +48,17 @@ public class HealthChange : MonoBehaviour
             _healthView.StopDraw(_health);
         }
 
-        HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
+        //HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out FirstAidKit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
-        {
-            _health.Heal();
-            HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.TryGetComponent(out FirstAidKit firstaidkit) && gameObject.TryGetComponent<PersonMovement>(out PersonMovement personMovement))
+    //    {
+    //        _health.Heal();
+    //        //HealthChanged?.Invoke(_health.CurrentValue, _health.MaxValue);
+    //    }
+    //}
 }
 
 
