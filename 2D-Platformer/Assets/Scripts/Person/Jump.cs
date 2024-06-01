@@ -8,6 +8,7 @@ public class Jump : MonoBehaviour
     [SerializeField] private LayerMask _ground;
     [SerializeField] private float _radiusTestingGround;
     [SerializeField] private Transform pointForTestGround;
+    [SerializeField] private Controller _controller;
 
     private Rigidbody2D _rigidbody;
     private bool isOnGround;
@@ -16,6 +17,7 @@ public class Jump : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _controller.KeyPassed += TryUseAttackKey;
     }
 
     private void FixedUpdate()
@@ -29,9 +31,9 @@ public class Jump : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void TryUseAttackKey(KeyCode keyCode)
     {
-        if (Input.GetKeyDown(KeyCode.W) && isOnGround)
+        if (keyCode == KeyCode.W && isOnGround)
         {
             _isKeyDown = true;
         }

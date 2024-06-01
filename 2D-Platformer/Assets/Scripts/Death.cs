@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
-    private HealthChange _healthChange;
+    private Health _healthChange;
 
     private void Start()
     {
-        _healthChange = GetComponent<HealthChange>();
+        _healthChange = GetComponent<Health>();
         _healthChange.HealthIsNegative += Kill;
     }
 

@@ -9,47 +9,37 @@ public class Vampirism : MonoBehaviour
     [SerializeField] private int _skillTime;
     [SerializeField] private int _cooldownTick;
     [SerializeField] private List<LayerMask> _excludes;
-    [SerializeField] private HealthChange _health;
+    [SerializeField] private Health _health;
+    [SerializeField] private float _bitePower;
+    [SerializeField] private Controller _controller;
 
     private Skill _skill;
-    private CircleCollider2D _circleSkillRadius;
     private bool _canUse = true;
 
     public event UnityAction<float> IsActivated;
 
     public float Range { get => _range; }
 
-    //private void Awake()
-    //{
-        //_circleSkillRadius = gameObject.AddComponent<CircleCollider2D>();
-        //_circleSkillRadius.enabled = false;
-        //_circleSkillRadius.isTrigger = true;
-        //_circleSkillRadius.radius = _range;
-
-        //foreach (LayerMask excude in _excludes)
-        //{
-        //    _circleSkillRadius.excludeLayers = excude;
-        //}
-    //}
-
     private void Start()
     {
         _skill = new Skill(_range);
+        _controller.KeyPassed += TryUseAttackKey;
     }
 
-    private void Update()
+    private void TryUseAttackKey(KeyCode keyCode)
     {
-        if (Input.GetKeyDown(KeyCode.E) && _skill.IsActive == false)
+        if (keyCode == KeyCode.E && _skill.IsActive == false)
         {
             IsActivated?.Invoke(_skillTime);
             StartCoroutine(SkillActivate());
             StartCoroutine(TryCollision());
         }
     }
-    private void DrinkHealth(HealthChange enemyHealth)
+
+    private void DrinkHealth(Health enemyHealth)
     {
-        _health.IncreaseHealth();
-        enemyHealth.DecreaseHealth();
+        _health.IncreaseHealth(_bitePower);
+        enemyHealth.DecreaseHealth(_bitePower);
     }
 
     private IEnumerator TryCollision()
@@ -62,8 +52,8 @@ public class Vampirism : MonoBehaviour
 
             foreach (var collider in hitColliders)
             {
-                if (collider.TryGetComponent(out Patrol patrol) && collider.TryGetComponent(out HealthChange enemyHealth)
-                    && _skill.IsActive == true && _canUse && !_health.Equals(enemyHealth))
+                if (_skill.IsActive && _canUse && collider.TryGetComponent(out Patrol patrol) && collider.TryGetComponent(out Health enemyHealth)
+                    && !_health.Equals(enemyHealth))
                 {
                     DrinkHealth(enemyHealth);
                     StartCoroutine(Delay());

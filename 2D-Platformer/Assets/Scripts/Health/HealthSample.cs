@@ -18,16 +18,16 @@ public class HealthSample
         _maxValue = maxHealth;
     }
 
-    public void Damage()
+    public void Damage(float damage)
     {
-        _currentValue --;
+        _currentValue -= damage;
         _currentValue = Mathf.Clamp(_currentValue, 0, MaxValue);
         ChangedCount?.Invoke(_currentValue, _maxValue);
     }
 
-    public void Heal()
+    public void Heal(float healing)
     {
-        _currentValue++;
+        _currentValue += healing;
         _currentValue = Mathf.Clamp(_currentValue, 0, MaxValue);
         ChangedCount?.Invoke(_currentValue, _maxValue);
     }

@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 457037665}
   - component: {fileID: 457037666}
   - component: {fileID: 457037667}
+  - component: {fileID: 457037668}
   m_Layer: 7
   m_Name: Person
   m_TagString: Untagged
@@ -580,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
+  _controller: {fileID: 457037668}
 --- !u!114 &457037661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +600,7 @@ MonoBehaviour:
     m_Bits: 8
   _radiusTestingGround: 0.01
   pointForTestGround: {fileID: 632403494}
+  _controller: {fileID: 457037668}
 --- !u!95 &457037662
 Animator:
   serializedVersion: 5
@@ -631,7 +634,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cafb30003e45842b64a07263a34691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackPower: 1
   _attackHitBox: {fileID: 2096770545}
+  _controller: {fileID: 457037668}
 --- !u!114 &457037664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,7 +646,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 457037655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 178811fb9b9ddf84c94a5c912159d683, type: 3}
+  m_Script: {fileID: 11500000, guid: 538220f556a2acd43ab49ea336933534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
@@ -715,6 +720,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c081f5f65ec8e10429476c40c293989f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &457037668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457037655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5dd75c167dedf4b839d9951a6e16aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &473131119
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +787,8 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Bits: 959
   _health: {fileID: 457037664}
+  _bitePower: 1
+  _controller: {fileID: 457037668}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,6 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecf405876fa6784aa7fe9eb62bc79dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackPower: 1
   _attackHitBox: {fileID: 1560782761}
   _attackRange: 2
   _playerLayerMask:
@@ -2267,7 +2287,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541114465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 178811fb9b9ddf84c94a5c912159d683, type: 3}
+  m_Script: {fileID: 11500000, guid: 538220f556a2acd43ab49ea336933534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 3
@@ -2527,6 +2547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be320a420017fde4bbc54d23018023a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attack: {fileID: 1883176450}
 --- !u!1 &1560782761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be320a420017fde4bbc54d23018023a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attack: {fileID: 1541114467}
 --- !u!61 &1560782763
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4002,7 +4024,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883176442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 178811fb9b9ddf84c94a5c912159d683, type: 3}
+  m_Script: {fileID: 11500000, guid: 538220f556a2acd43ab49ea336933534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 3
@@ -4019,6 +4041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecf405876fa6784aa7fe9eb62bc79dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackPower: 1
   _attackHitBox: {fileID: 1549513873}
   _attackRange: 2
   _playerLayerMask:
@@ -4276,6 +4299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be320a420017fde4bbc54d23018023a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attack: {fileID: 457037663}
 --- !u!1 &2111515182
 GameObject:
   m_ObjectHideFlags: 0

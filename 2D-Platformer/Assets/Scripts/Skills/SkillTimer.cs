@@ -21,10 +21,11 @@ public class SkillTimer : MonoBehaviour
     private IEnumerator CountDown(float startTime)
     {
         _timer.text = startTime.ToString();
+        WaitForSeconds wait = new WaitForSeconds(1);
 
         while (startTime > 0)
         {
-            yield return new WaitForSeconds(1);
+            yield return wait;
             startTime--;
             _timer.text = startTime.ToString();
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack : AttackBase
 {
     [SerializeField] private GameObject _attackHitBox;
     [SerializeField] private float _attackRange;
